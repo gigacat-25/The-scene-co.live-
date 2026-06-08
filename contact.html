@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Inquiry | THE SCENE CO. LIVE</title>
+    <meta name="description" content="Initiate your event brief with The Scene Co. Live. Get in touch via WhatsApp, email, or complete our qualification form for premium event production consulting."/>
+    
+    <!-- Preconnect origins to speed up connection setup -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://lh3.googleusercontent.com">
+    <link rel="preconnect" href="https://images.unsplash.com">
+
+    <!-- Google Fonts & Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Link optimized shared stylesheet -->
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <div class="film-grain"></div>
+
+    <!-- Custom Cursor elements -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-ring" id="cursor-ring"></div>
+
+    <!-- -------------------------------------------------------------
+       1. NAVIGATION HEADER
+       ------------------------------------------------------------- -->
+    <nav>
+        <div class="nav-container">
+            <a class="nav-logo hover-target" href="/index.html">
+                <img src="/logo-nav.png" alt="The Scene Co. Live Logo" class="nav-logo-img" width="191" height="52" fetchpriority="high" />
+            </a>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a class="hover-target" href="/index.html">Home</a></li>
+                <li><a class="hover-target" href="/experience.html">Experience</a></li>
+                <li><a class="hover-target" href="/services.html">Services</a></li>
+                <li><a class="hover-target" href="/portfolio.html">Portfolio</a></li>
+                <li><a class="hover-target" href="/process.html">Process</a></li>
+                <li><a class="hover-target active" href="/contact.html">Inquiry</a></li>
+            </ul>
+
+            <a class="btn btn-primary nav-btn hover-target" href="/contact.html">Initiate Brief</a>
+
+            <button class="mobile-menu-toggle hover-target" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- -------------------------------------------------------------
+       2. CONTACT & INQUIRY SECTION
+       ------------------------------------------------------------- -->
+    <section class="contact" id="contact" style="padding-top: 180px;">
+        <div class="ambient-glow-container">
+            <div class="ambient-glow glow-magenta float-glow" style="width: 500px; height: 500px; bottom: 0; right: -100px; animation-duration: 13s;"></div>
+        </div>
+
+        <div class="container reveal">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="overline" style="color: var(--magenta);">INITIATE</span>
+                    <h2>Let's build something unforgettable.</h2>
+                    <p>
+                        Tell us about your next big idea. Our creative directors and production leads will get back to you within 24 hours to schedule an initial consultation.
+                    </p>
+                    
+                    <div class="contact-channels">
+                        <!-- WhatsApp Direct -->
+                        <a class="channel-card channel-whatsapp hover-target" href="https://wa.me/1234567890" target="_blank">
+                            <div class="channel-icon">
+                                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">chat</span>
+                            </div>
+                            <div class="channel-details">
+                                <h4>WhatsApp Direct</h4>
+                                <p>Instant response for urgent briefs.</p>
+                            </div>
+                        </a>
+                        
+                        <!-- Email -->
+                        <div class="channel-card channel-email">
+                            <div class="channel-icon">
+                                <span class="material-symbols-outlined">mail</span>
+                            </div>
+                            <div class="channel-details">
+                                <h4>hello@thesceneco.live</h4>
+                                <p>General proposals and details.</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="channel-card channel-phone">
+                            <div class="channel-icon">
+                                <span class="material-symbols-outlined">call</span>
+                            </div>
+                            <div class="channel-details">
+                                <h4>+1 (800) 555-SCENE</h4>
+                                <p>Office line (Mon - Fri, 9am - 6pm EST).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <form class="inquiry-form" id="brief-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input class="form-input" type="text" id="name" required placeholder=" " />
+                                <label class="form-label" for="name">Your Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-input" type="text" id="org" placeholder=" " />
+                                <label class="form-label" for="org">Organization</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-input" type="email" id="email" required placeholder=" " />
+                            <label class="form-label" for="email">Email Address</label>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <select class="form-input" id="classification" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="corporate">Corporate Summit</option>
+                                    <option value="activation">Brand Activation</option>
+                                    <option value="concert">Concert / Stage Show</option>
+                                    <option value="wedding">Private Wedding</option>
+                                    <option value="other">Custom Production</option>
+                                </select>
+                                <label class="form-label" for="classification">Event Classification</label>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-input" id="budget" required>
+                                    <option value="" disabled selected></option>
+                                    <option value="75-150">$75k – $150k</option>
+                                    <option value="150-300">$150k – $300k</option>
+                                    <option value="300-500">$300k – $500k</option>
+                                    <option value="500plus">$500k+</option>
+                                </select>
+                                <label class="form-label" for="budget">Estimated Budget</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-input" type="text" id="date-region" required placeholder=" " />
+                            <label class="form-label" for="date-region">Target Date & Region</label>
+                        </div>
+
+                        <div class="form-group">
+                            <input class="form-input" type="text" id="brief" required placeholder=" " />
+                            <label class="form-label" for="brief">Brief Vision Summary</label>
+                        </div>
+
+                        <button class="btn btn-primary form-btn hover-target" type="submit">Send Brief</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+       3. FAQ ACCORDION SECTION
+       ------------------------------------------------------------- -->
+    <section class="faq" id="faq" style="border-top: 1px solid var(--border-color);">
+        <div class="container reveal">
+            <div class="section-header">
+                <span class="overline" style="color: var(--blue);">LOGISTICS & CLARITY</span>
+                <h2>Frequently Asked Logistics</h2>
+            </div>
+
+            <div class="faq-accordion">
+                <!-- 1 -->
+                <div class="faq-item">
+                    <button class="faq-trigger hover-target">
+                        What is your typical project timeline from consultation to live execution?
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>For large-scale corporate summits, brand activations, or complex weddings, we recommend a lead time of 12 to 24 weeks. This allows for thorough creative development, custom set fabrication, CAD drafting, and structural permit acquisitions. However, we can accommodate expedited timelines depending on scope.</p>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="faq-item">
+                    <button class="faq-trigger hover-target">
+                        Do you travel globally, or do you only execute events in specific regions?
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>We execute live experiences globally. Our production management team is highly experienced in international logistics, customs carnet filings, and collaborating with local regional authorities across the US, Europe, and the Middle East.</p>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="faq-item">
+                    <button class="faq-trigger hover-target">
+                        How do you handle custom fabrication and set design?
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>We operate our own in-house woodworking, metalworking, and technical pre-production workshops. Once a 3D design is approved, our fabrication team builds the physical components to scale. This ensures everything is built to exact tolerances before arriving on site.</p>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="faq-item">
+                    <button class="faq-trigger hover-target">
+                        What is the typical budget threshold required to work with The Scene Co. Live?
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>Because we focus on high-fidelity technical production, custom spatial design, and complete management, our projects typically begin at a minimum investment of $75,000 for boutique activations and scale upward of $500,000 for arena productions, global corporate summits, and multi-day private experiences.</p>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="faq-item">
+                    <button class="faq-trigger hover-target">
+                        How do you manage safety, structural engineering, and municipal permits?
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                    <div class="faq-content">
+                        <p>Safety is our highest priority. For all custom structural builds, rigging, and large temporary setups, we collaborate with certified structural engineers to sign off on technical drawings. We manage the entire municipal permit process—including fire code compliance, electrical safety sign-offs, and sound zoning ordinances.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- -------------------------------------------------------------
+       4. FOOTER
+       ------------------------------------------------------------- -->
+    <footer>
+        <div class="container reveal">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/index.html" class="hover-target" style="display: inline-block; margin-bottom: 24px;">
+                        <img src="/logo-nav.png" alt="The Scene Co. Live Logo" class="footer-logo-img" width="191" height="52" loading="lazy" decoding="async" />
+                    </a>
+                    <p>Spatial event architects, engineers, and production leads translating radical creative concepts into high-fidelity physical reality.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Direct links</h4>
+                    <ul>
+                        <li><a class="hover-target" href="/experience.html">About Us</a></li>
+                        <li><a class="hover-target" href="/services.html">Services</a></li>
+                        <li><a class="hover-target" href="/portfolio.html">Featured Works</a></li>
+                        <li><a class="hover-target" href="/process.html">Our Process</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Hub locations</h4>
+                    <ul>
+                        <li><a href="#" style="pointer-events: none;">New York City, USA</a></li>
+                        <li><a href="#" style="pointer-events: none;">London, United Kingdom</a></li>
+                        <li><a href="#" style="pointer-events: none;">Dubai, United Arab Emirates</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 THE SCENE CO. LIVE. ALL RIGHTS RESERVED.</p>
+                
+                <div class="footer-socials">
+                    <a class="social-link social-insta hover-target" href="#" aria-label="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                    </a>
+                    <a class="social-link social-linkin hover-target" href="#" aria-label="LinkedIn">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <a class="social-link social-vimeo hover-target" href="#" aria-label="Vimeo">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M22.396 7.21c-.097 2.112-1.59 5.006-4.478 8.685-2.973 3.824-5.485 5.733-7.537 5.733-1.272 0-2.345-1.171-3.218-3.516-.587-2.148-1.173-4.296-1.759-6.444-.653-2.408-1.353-3.613-2.102-3.613-.163 0-.734.343-1.714 1.028l-.946-1.207c1.011-.88 2.008-1.76 2.992-2.64 1.336-1.14 2.333-1.743 2.992-1.808 1.565-.13 2.527.946 2.885 3.23.392 2.441.67 3.961.83 4.56.49 2.216.994 3.324 1.517 3.324.408 0 1.028-.636 1.858-1.908.83-1.272 1.273-2.233 1.321-2.886.098-1.14-.31-1.711-1.223-1.711-.424 0-.864.098-1.32.293 2.054-6.745 6.035-6.501 6.953-2.029.08 3.94-.96 6.02-3.13 6.02z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript module -->
+    <script type="module" src="/main.js"></script>
+</body>
+</html>

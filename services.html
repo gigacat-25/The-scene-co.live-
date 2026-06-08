@@ -3,19 +3,14 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>THE SCENE CO. LIVE | Premium Event Production & Live Experiences</title>
-    <meta name="description" content="The Scene Co. Live is an end-to-end event production and live experience design agency. We engineer premium brand activations, corporate summits, stage experiences, and luxury private events globally."/>
+    <title>Services | THE SCENE CO. LIVE</title>
+    <meta name="description" content="Explore our high-fidelity event production capabilities: corporate summits, custom wedding installations, interactive brand activations, concert stage rigs, and sound engineering."/>
     
     <!-- Preconnect origins to speed up connection setup -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://lh3.googleusercontent.com">
     <link rel="preconnect" href="https://images.unsplash.com">
-
-    <!-- Preload critical hero background and above-the-fold logo (LCP optimization) -->
-    <link rel="preload" href="/hero-bg.png" as="image" fetchpriority="high">
-    <link rel="preload" href="/logo-hero.png" as="image" fetchpriority="high">
-    <link rel="preload" href="/logo-nav.png" as="image" fetchpriority="high">
 
     <!-- Google Fonts & Material Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&family=Great+Vibes&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
@@ -41,9 +36,9 @@
             </a>
             
             <ul class="nav-links" id="nav-links">
-                <li><a class="hover-target active" href="/index.html">Home</a></li>
+                <li><a class="hover-target" href="/index.html">Home</a></li>
                 <li><a class="hover-target" href="/experience.html">Experience</a></li>
-                <li><a class="hover-target" href="/services.html">Services</a></li>
+                <li><a class="hover-target active" href="/services.html">Services</a></li>
                 <li><a class="hover-target" href="/portfolio.html">Portfolio</a></li>
                 <li><a class="hover-target" href="/process.html">Process</a></li>
                 <li><a class="hover-target" href="/contact.html">Inquiry</a></li>
@@ -58,87 +53,127 @@
     </nav>
 
     <!-- -------------------------------------------------------------
-       2. HERO SECTION
+       2. SERVICES SECTION
        ------------------------------------------------------------- -->
-    <section class="hero" id="hero">
+    <section class="services" id="services" style="padding-top: 180px;">
         <div class="ambient-glow-container">
-            <div class="ambient-glow glow-magenta float-glow" style="width: 500px; height: 500px; top: -80px; left: -80px; animation-duration: 12s;"></div>
-            <div class="ambient-glow glow-yellow float-glow" style="width: 400px; height: 400px; top: 200px; right: -40px; animation-duration: 8s;"></div>
-            <div class="ambient-glow glow-blue float-glow" style="width: 450px; height: 450px; bottom: -80px; left: 30%; animation-duration: 15s;"></div>
+            <div class="ambient-glow glow-lime float-glow" style="width: 400px; height: 400px; top: -50px; left: -100px; animation-duration: 10s;"></div>
         </div>
 
         <div class="container reveal">
-            <!-- Small monogram badge -->
-            <div class="hero-logo-badge" style="margin-bottom: 20px;">
-                <img src="/logo-hero.png" alt="The Scene Co. Live Monogram" class="hero-logo-img" width="90" height="82" fetchpriority="high" style="width: 90px; height: auto; opacity: 0.92; filter: drop-shadow(0 0 18px rgba(236,72,153,0.35));" />
+            <div class="section-header">
+                <span class="overline" style="color: var(--lime);">OUR CAPABILITIES</span>
+                <h2>Spatial Design & Production at Scale</h2>
+                <p>
+                    We construct immersive setups from the ground up, providing the creative framework and the technical execution.
+                </p>
             </div>
 
-            <h1 class="hero-title">
-                We build <span class="magenta-text">temporary worlds</span> for <span class="yellow-text">permanent memories</span>.
-            </h1>
-            <p class="hero-subtitle" style="max-width: 620px; font-size: clamp(15px, 1.8vw, 18px);">
-                An end-to-end production studio engineering premium live experiences — from arena concert stages and brand activations to luxury architectural events.
-            </p>
-            <div class="hero-ctas">
-                <a class="btn btn-primary hover-target" href="/contact.html">Book a Consultation</a>
-                <a class="btn btn-secondary hover-target" href="/portfolio.html">View Our Work</a>
-            </div>
-        </div>
+            <div class="services-bento">
+                <!-- 1. Corporate Events -->
+                <div class="glass-card service-card service-lime card-lime hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">corporate_fare</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Corporate Events</h3>
+                        <p>Translating corporate strategy into immersive physical narratives. Keynotes, summits, VIP dinners, and brand milestones executed at scale.</p>
+                    </div>
+                </div>
 
-        <div class="scroll-down hover-target" onclick="document.getElementById('highlights').scrollIntoView();">
-            <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+                <!-- 2. Wedding Production -->
+                <div class="glass-card service-card service-magenta card-magenta hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">favorite</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Wedding Production</h3>
+                        <p>Architectural beauty meets flawless logistics. Custom stages, floral installations, and full spatial choreography for unforgettable celebrations.</p>
+                    </div>
+                </div>
+
+                <!-- 3. Brand Activations -->
+                <div class="glass-card service-card service-orange card-orange hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">campaign</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Brand Activations</h3>
+                        <p>Interactive retail pop-ups and sensory galleries built to capture attention, engage audiences, and spark digital growth.</p>
+                    </div>
+                </div>
+
+                <!-- 4. Concerts and Live Shows -->
+                <div class="glass-card service-card service-blue card-blue hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">theater_comedy</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Concerts & Live Shows</h3>
+                        <p>Stadium-scale mainstage setups, laser design, tour rigs, pyrotechnic coordination, and artist backstage logistics.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Stage, Sound and Lighting -->
+                <div class="glass-card service-card service-yellow card-yellow hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">precision_manufacturing</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Stage, Sound & Lighting</h3>
+                        <p>The acoustic and visual spine. Programmed moving lights, custom LED arrays, and high-fidelity spatial audio setups.</p>
+                    </div>
+                </div>
+
+                <!-- 6. Venue Styling and Decor -->
+                <div class="glass-card service-card service-magenta card-magenta hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">spatial_tracking</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Venue Styling & Decor</h3>
+                        <p>Complete spatial shifts. Sourcing and fabricating custom furniture, drapes, and installations that alter the room's volume.</p>
+                    </div>
+                </div>
+
+                <!-- 7. Artist Management -->
+                <div class="glass-card service-card service-blue card-blue hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">star</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Artist Management</h3>
+                        <p>Seamless coordination of world-class performers, contractual riders, travel schedules, and stage cues.</p>
+                    </div>
+                </div>
+
+                <!-- 8. Exhibition and Setup -->
+                <div class="glass-card service-card service-lime card-lime hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">grid_view</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>Exhibition & Setup</h3>
+                        <p>High-traffic exhibition stands, trade show pavilions, and gallery configurations designed for optimal visitor circulation.</p>
+                    </div>
+                </div>
+
+                <!-- 9. End-to-End Event Execution -->
+                <div class="glass-card service-card service-orange card-orange hover-target">
+                    <div class="service-icon-box">
+                        <span class="material-symbols-outlined">verified</span>
+                    </div>
+                    <div class="service-info">
+                        <h3>End-to-End Execution</h3>
+                        <p>Complete operational ownership. Site scoping, permit acquisition, vendor coordination, live stage direction, and strike.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- -------------------------------------------------------------
-       3. HOME PREVIEW HIGHLIGHTS
-       ------------------------------------------------------------- -->
-    <section class="about" id="highlights" style="padding: 100px 0 120px;">
-        <div class="container reveal">
-            <div class="section-header" style="margin-bottom: 60px;">
-                <span class="overline" style="color: var(--yellow);">THE STUDIO</span>
-                <h2>Designing the Extraordinary</h2>
-                <p>We believe live experiences are cinematic sequences of permanent memories. Explore the pillars of our agency.</p>
-            </div>
-            <div class="about-grid" style="grid-template-columns: repeat(3, 1fr); gap: 32px;">
-                <!-- Capabilities Highlight -->
-                <div class="glass-card card-lime hover-target" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
-                    <div>
-                        <span class="material-symbols-outlined" style="font-size: 40px; color: var(--lime); margin-bottom: 20px; display: block;">spatial_tracking</span>
-                        <h3 style="font-size: 24px; margin-bottom: 16px; text-transform: uppercase;">Capabilities</h3>
-                        <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px;">Spatial design, technical production, and logistics engineering at scale. From concert stages to luxury weddings.</p>
-                    </div>
-                    <a class="btn btn-secondary hover-target" href="/services.html" style="padding: 12px 24px; font-size: 12px; align-self: flex-start;">Explore Services</a>
-                </div>
-                
-                <!-- Portfolio Highlight -->
-                <div class="glass-card card-magenta hover-target" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
-                    <div>
-                        <span class="material-symbols-outlined" style="font-size: 40px; color: var(--magenta); margin-bottom: 20px; display: block;">theater_comedy</span>
-                        <h3 style="font-size: 24px; margin-bottom: 16px; text-transform: uppercase;">Showcase</h3>
-                        <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px;">Browse our portfolio of global brand activations, stadium concert sets, and architectural private experiences.</p>
-                    </div>
-                    <a class="btn btn-secondary hover-target" href="/portfolio.html" style="padding: 12px 24px; font-size: 12px; align-self: flex-start;">View Showcase</a>
-                </div>
-
-                <!-- Process Highlight -->
-                <div class="glass-card card-blue hover-target" style="display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;">
-                    <div>
-                        <span class="material-symbols-outlined" style="font-size: 40px; color: var(--blue); margin-bottom: 20px; display: block;">precision_manufacturing</span>
-                        <h3 style="font-size: 24px; margin-bottom: 16px; text-transform: uppercase;">Process</h3>
-                        <p style="color: var(--text-muted); font-size: 15px; line-height: 1.6; margin-bottom: 24px;">Our roadmap to showtime. From scoping and concepts to blueprint drafting, fabrication, and live direction.</p>
-                    </div>
-                    <a class="btn btn-secondary hover-target" href="/process.html" style="padding: 12px 24px; font-size: 12px; align-self: flex-start;">See Roadmap</a>
-                </div>
-            </div>
-            <div class="hero-ctas" style="margin-top: 60px;">
-                <a class="btn btn-primary hover-target" href="/contact.html">Initiate a Brief</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- -------------------------------------------------------------
-       4. FOOTER
+       3. FOOTER
        ------------------------------------------------------------- -->
     <footer>
         <div class="container reveal">
