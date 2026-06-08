@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE SCENE CO. LIVE | Premium Event Production</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#002e6a",
+                    "tertiary": "#fffcff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-tertiary-fixed-variant": "#8c0053",
+                    "surface": "#131313",
+                    "error": "#ffb4ab",
+                    "on-primary-fixed": "#211b00",
+                    "on-primary-container": "#726300",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-primary": "#393000",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-tertiary-container": "#ba1b72",
+                    "outline-variant": "#4b4734",
+                    "tertiary-fixed": "#ffd9e4",
+                    "inverse-on-surface": "#313030",
+                    "on-surface": "#e5e2e1",
+                    "background": "#131313",
+                    "on-error": "#690005",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed-variant": "#524600",
+                    "on-tertiary-fixed": "#3e0022",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#353534",
+                    "primary-fixed": "#ffe24c",
+                    "tertiary-fixed-dim": "#ffb0cd",
+                    "secondary-container": "#0566d9",
+                    "surface-container-low": "#1c1b1b",
+                    "inverse-primary": "#6d5e00",
+                    "surface-tint": "#e2c62d",
+                    "error-container": "#93000a",
+                    "secondary": "#adc6ff",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-secondary-fixed": "#001a42",
+                    "primary-container": "#fde047",
+                    "on-tertiary": "#640039",
+                    "on-secondary-container": "#e6ecff",
+                    "primary-fixed-dim": "#e2c62d",
+                    "surface-container": "#201f1f",
+                    "surface-bright": "#3a3939",
+                    "on-surface-variant": "#cec6ad",
+                    "surface-dim": "#131313",
+                    "tertiary-container": "#ffd6e3",
+                    "primary": "#fffcff",
+                    "outline": "#97917a",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-container-high": "#2a2a2a",
+                    "on-background": "#e5e2e1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "base": "8px",
+                    "margin-desktop": "64px",
+                    "container-max": "1440px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Bricolage Grotesque"],
+                    "label-md": ["Manrope"],
+                    "headline-md": ["Bricolage Grotesque"],
+                    "headline-sm": ["Bricolage Grotesque"],
+                    "body-lg": ["Manrope"],
+                    "headline-lg-mobile": ["Bricolage Grotesque"],
+                    "headline-lg": ["Bricolage Grotesque"],
+                    "body-md": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["36px", {"lineHeight": "1.1", "fontWeight": "800"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+            opacity: 0.03;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .neon-border-yellow { border: 1px solid #fde047; box-shadow: 0 0 15px rgba(253, 224, 71, 0.2); }
+        .neon-border-blue { border: 1px solid #adc6ff; box-shadow: 0 0 15px rgba(173, 198, 255, 0.2); }
+        .neon-border-pink { border: 1px solid #ffd9e4; box-shadow: 0 0 15px rgba(255, 217, 228, 0.2); }
+        
+        .stage-glow-yellow { background: radial-gradient(circle, rgba(253, 224, 71, 0.15) 0%, transparent 70%); }
+        .stage-glow-blue { background: radial-gradient(circle, rgba(5, 102, 217, 0.15) 0%, transparent 70%); }
+        .stage-glow-pink { background: radial-gradient(circle, rgba(186, 27, 114, 0.15) 0%, transparent 70%); }
+
+        .portfolio-21-9 { aspect-ratio: 21 / 9; }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<div class="film-grain"></div>
+<!-- Navigation Header -->
+<nav class="fixed top-0 w-full z-50 bg-white/15 backdrop-blur-xl border-b border-white/10">
+<div class="flex justify-between items-center w-full px-gutter py-4 max-w-container-max mx-auto">
+<div class="font-headline-sm text-headline-sm font-extrabold tracking-tighter text-on-surface">
+                THE SCENE CO. LIVE
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-primary-container font-bold border-b-2 border-primary-container pb-1 hover:text-primary-container hover:scale-105 transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(253,224,71,0.5)]" href="#">Experience</a>
+<a class="font-label-md text-label-md text-on-surface-variant font-medium hover:text-primary-container hover:scale-105 transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(253,224,71,0.5)]" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant font-medium hover:text-primary-container hover:scale-105 transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(253,224,71,0.5)]" href="#">Portfolio</a>
+<a class="font-label-md text-label-md text-on-surface-variant font-medium hover:text-primary-container hover:scale-105 transition-all duration-300 hover:drop-shadow-[0_0_10px_rgba(253,224,71,0.5)]" href="#">Process</a>
+</div>
+<button class="bg-primary-container text-on-primary-fixed px-6 py-2 font-label-md text-label-md rounded-full font-bold active:scale-95 transition-transform duration-200">
+                Initiate Brief
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute -top-1/4 -left-1/4 w-1/2 h-1/2 stage-glow-pink animate-float"></div>
+<div class="absolute top-1/4 -right-1/4 w-1/2 h-1/2 stage-glow-yellow animate-float" style="animation-delay: -2s;"></div>
+<div class="absolute -bottom-1/4 left-1/3 w-1/2 h-1/2 stage-glow-blue animate-float" style="animation-delay: -4s;"></div>
+</div>
+<div class="relative z-10 px-margin-desktop max-w-container-max mx-auto text-center">
+<h1 class="font-headline-xl text-headline-xl text-primary-container mb-6 max-w-5xl mx-auto">
+                We build temporary worlds for permanent memories.
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10">
+                The Scene Co. Live is a creative event management and production studio dedicated to crafting immersive environments for the world's most ambitious brands and festivals.
+            </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+<button class="bg-primary-container text-on-primary-fixed px-10 py-4 font-label-md text-label-md rounded-full font-black uppercase tracking-widest hover:scale-105 transition-all">
+                    Book a Consultation
+                </button>
+<button class="border border-secondary text-secondary px-10 py-4 font-label-md text-label-md rounded-full font-black uppercase tracking-widest hover:bg-secondary/10 transition-all">
+                    View Our Work
+                </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- About Section -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="grid md:grid-cols-2 gap-16 items-center mb-24">
+<div>
+<span class="text-secondary font-label-md text-label-md tracking-[0.2em] uppercase mb-4 block">Our Legacy</span>
+<h2 class="font-headline-lg text-headline-lg mb-6">Execution at the Speed of Live</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    Born from the chaotic energy of the international music scene, we bring technical precision and artistic flair to every activation. We don't just plan events; we architect experiences that pulsate with life.
+                </p>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="glass-card neon-border-yellow p-8 rounded-xl flex items-center justify-between group hover:bg-white/10 transition-all">
+<div>
+<div class="font-headline-lg text-headline-lg text-primary-container">500+</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Live Events Produced</div>
+</div>
+<span class="material-symbols-outlined text-4xl text-primary-container opacity-50 group-hover:opacity-100">celebration</span>
+</div>
+<div class="glass-card neon-border-blue p-8 rounded-xl flex items-center justify-between group hover:bg-white/10 transition-all">
+<div>
+<div class="font-headline-lg text-headline-lg text-secondary">12</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Countries Reached</div>
+</div>
+<span class="material-symbols-outlined text-4xl text-secondary opacity-50 group-hover:opacity-100">public</span>
+</div>
+<div class="glass-card neon-border-pink p-8 rounded-xl flex items-center justify-between group hover:bg-white/10 transition-all">
+<div>
+<div class="font-headline-lg text-headline-lg text-tertiary-fixed-dim">100+</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Global Brand Partners</div>
+</div>
+<span class="material-symbols-outlined text-4xl text-tertiary-fixed-dim opacity-50 group-hover:opacity-100">star</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section (Bento Grid) -->
+<section class="py-24 bg-surface-container-low">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-center mb-16">Spatial design and production,<br/>executed at scale.</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Color coded cards -->
+<div class="glass-card p-8 rounded-2xl border-l-4 border-primary-container hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-primary-container mb-4 text-3xl">corporate_fare</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Corporate</h3>
+<p class="text-on-surface-variant">Elevating summits and keynotes into high-energy brand milestones.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-secondary hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-secondary mb-4 text-3xl">favorite</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Wedding</h3>
+<p class="text-on-surface-variant">Transforming personal narratives into cinematic celebrations of love.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-error mb-4 border-l-4 hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-error mb-4 text-3xl">campaign</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Brand Activations</h3>
+<p class="text-on-surface-variant">Immersive retail and pop-up experiences that drive engagement.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-tertiary-fixed-dim hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-tertiary-fixed-dim mb-4 text-3xl">theater_comedy</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Festivals</h3>
+<p class="text-on-surface-variant">Main stage production and site management for massive crowds.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-primary-fixed-dim hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-primary-fixed-dim mb-4 text-3xl">lightbulb</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Creative Tech</h3>
+<p class="text-on-surface-variant">Integrating AR, VR, and interactive lighting into physical spaces.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-on-secondary-container hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-on-secondary-container mb-4 text-3xl">precision_manufacturing</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Set Fabrication</h3>
+<p class="text-on-surface-variant">Custom structural builds designed for rapid deployment and strike.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-green-400 hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-green-400 mb-4 text-3xl">videocam</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Live Broadcast</h3>
+<p class="text-on-surface-variant">Multi-cam production and global streaming infrastructure.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-orange-400 hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-orange-400 mb-4 text-3xl">tour</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Tour Management</h3>
+<p class="text-on-surface-variant">Logistical and technical support for traveling productions.</p>
+</div>
+<div class="glass-card p-8 rounded-2xl border-l-4 border-purple-400 hover:-translate-y-2 transition-transform">
+<span class="material-symbols-outlined text-purple-400 mb-4 text-3xl">spatial_audio_off</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">Spatial Audio</h3>
+<p class="text-on-surface-variant">Immersive 360-degree soundscapes that define the room.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section -->
+<section class="py-24">
+<div class="px-margin-desktop max-w-container-max mx-auto overflow-hidden">
+<div class="flex justify-between items-end mb-16">
+<h2 class="font-headline-lg text-headline-lg">Latest Works</h2>
+<button class="text-primary-container font-label-md text-label-md flex items-center gap-2 group">
+                    View Archive <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-12">
+<!-- Aura -->
+<div class="relative portfolio-21-9 overflow-hidden rounded-2xl group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A futuristic festival stage with massive neon geometric patterns and laser beams cutting through a haze of smoke. The lighting is dominated by electric blues and vibrant pinks, creating a high-energy cinematic atmosphere in a dark outdoor venue. Crowds of people are silhouetted against the blinding stage lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTFKl4SRNnhkXb6Zi6fgh1HBb2ib3PiVphyd_1Iz7pOCPdCnR0KbQ4HzkmUuo-LIgG3CpVrcUHGYe1Sp8vnjgfacN8k7Sy3KM0GaRu91UL5hKeiGzxL51WvN0veCwcAF3fuSK2_3Ca_RfCEBB4miJ4Q4TWiORNj44ejxQN-zCLWODjYO5YEgDr32Sj7sj9yJaW3cgOHUqU8-2Xh9x3LkXmKFJbfeJ_ZsFzrMYIKeZiOyjnuu76QUIfbYtVvKfgUrZttPJxw_-C2Wrq"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
+<h3 class="font-headline-md text-headline-md text-white">Project: AURA</h3>
+<p class="text-on-surface-variant font-label-md">Mainstage Design | Ultra Miami</p>
+</div>
+</div>
+<!-- Monolith -->
+<div class="relative portfolio-21-9 overflow-hidden rounded-2xl group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist architectural installation for a luxury brand product launch. The setting is a sleek charcoal-colored industrial space with a single monolithic white structure illuminated by a sharp spotlight. The mood is sophisticated and avant-garde, utilizing high-contrast lighting and shadows to create a feeling of premium exclusivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmZIOui4BQO6tRzfZj_1pXMCIE_GOW8OP876C3h0PceTVum4Bffd0zmL9_eU_tDyTRsRN8cDJaaMe9jg93_fKpCmBbUmERf2PB-u4iQ_7W-B9WXX-GEC6Hn6H0NFFc-aQKs7MA4HlIurw5DeuDq0fWsAnOt17m0-3HJ6ZQ0-_tHTbKBVCUx8dix_Rek9RodYnyqfBungUwaMGlzPcWsQZAXTVRZtCsQfbbKwvTGXHUQBdx5XBmtlwPr6jxE16Db_cE1fPu2bhk493I"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
+<h3 class="font-headline-md text-headline-md text-white">Project: MONOLITH</h3>
+<p class="text-on-surface-variant font-label-md">Art Installation | LVMH Paris</p>
+</div>
+</div>
+<!-- Nocturne -->
+<div class="relative portfolio-21-9 overflow-hidden rounded-2xl group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An energetic concert environment with a crowd of thousands raising their hands. The stage features a complex web of scaffolding and hundreds of moving head lights projecting warm amber and gold hues. The atmosphere is dense with excitement and celebratory energy, captured with professional photography depth and clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkJRcY5ctpT5jQqMc0nYah0eqnVSN53_Arg6NtqmRTFdmmnb9F35sqnR30kWu3KslTxU_rTXS0Rh9utvbzDKE8mjRghR7NNF3ADZAwd_sKz0xk2eJVooNHKqjLdGDRRSUa6MJ5rO6dQge8cAjQ_Lxh_bl9M-GUY1CAFZ1hf8x6_GbJT2y0yef4QVsW1gTF4pai6yEDcqFTgXw7nxiP28c1wnRSRAS7hXcSVQupfwzP6y0smaodV46bUKpsA0FIDlSmyDYbdy3uJT5g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-12">
+<h3 class="font-headline-md text-headline-md text-white">Project: NOCTURNE</h3>
+<p class="text-on-surface-variant font-label-md">Concert Series | London O2</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-16 text-center">Engineered for Awe</h2>
+<div class="grid md:grid-cols-5 gap-8">
+<div class="text-center">
+<div class="w-16 h-16 bg-primary-container rounded-full mx-auto mb-6 flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Rapid Response</h4>
+<p class="text-on-surface-variant text-sm">We thrive on tight deadlines and high stakes.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-secondary rounded-full mx-auto mb-6 flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Creative First</h4>
+<p class="text-on-surface-variant text-sm">Technicality serves the artistic vision, always.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-error rounded-full mx-auto mb-6 flex items-center justify-center text-on-error">
+<span class="material-symbols-outlined text-3xl">verified</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Zero Failure</h4>
+<p class="text-on-surface-variant text-sm">Redundant systems ensure the show always goes on.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-tertiary-fixed-dim rounded-full mx-auto mb-6 flex items-center justify-center text-on-tertiary">
+<span class="material-symbols-outlined text-3xl">monitoring</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Data Driven</h4>
+<p class="text-on-surface-variant text-sm">Post-event analytics to measure real-world impact.</p>
+</div>
+<div class="text-center">
+<div class="w-16 h-16 bg-primary rounded-full mx-auto mb-6 flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-3xl">eco</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Sustainable</h4>
+<p class="text-on-surface-variant text-sm">Building massive worlds with a minimal footprint.</p>
+</div>
+</div>
+</section>
+<!-- Process -->
+<section class="py-24 bg-surface-container-highest/20 relative">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-20 text-center">The Road to Showtime</h2>
+<div class="grid md:grid-cols-6 gap-4 relative">
+<!-- Timeline stages -->
+<div class="glass-card p-6 rounded-xl border-t-4 border-primary-container relative">
+<div class="text-6xl font-black text-white/5 absolute top-4 right-4">01</div>
+<span class="font-label-md text-label-md text-primary-container mb-4 block">DISCOVERY</span>
+<p class="text-sm opacity-80">Defining the project soul and core goals.</p>
+</div>
+<div class="glass-card p-6 rounded-xl border-t-4 border-tertiary-fixed-dim relative">
+<div class="text-6xl font-black text-white/5 absolute top-4 right-4">02</div>
+<span class="font-label-md text-label-md text-tertiary-fixed-dim mb-4 block">CONCEPT</span>
+<p class="text-sm opacity-80">Moodboards, 3D renders, and sensory mapping.</p>
+</div>
+<div class="glass-card p-6 rounded-xl border-t-4 border-secondary relative">
+<div class="text-6xl font-black text-white/5 absolute top-4 right-4">03</div>
+<span class="font-label-md text-label-md text-secondary mb-4 block">PLANNING</span>
+<p class="text-sm opacity-80">Technical rider development and logistics.</p>
+</div>
+<div class="glass-card p-6 rounded-xl border-t-4 border-green-400 relative">
+<div class="text-6xl font-black text-white/5 absolute top-4 right-4">04</div>
+<span class="font-label-md text-label-md text-green-400 mb-4 block">PRODUCTION</span>
+<p class="text-sm opacity-80">Build phase and equipment deployment.</p>
+</div>
+<div class="glass-card p-6 rounded-xl border-t-4 border-orange-400 relative">
+<div class="text-6xl font-black text-white/5 absolute top-4 right-4">05</div>
+<span class="font-label-md text-label-md text-orange-400 mb-4 block">LIVE</span>
+<p class="text-sm opacity-80">The magic moment. Precision execution.</p>
+</div>
+<div class="glass-card p-6 rounded-xl border-t-4 border-white relative">
+<div class="text-6xl font-black text-white/5 absolute top-4 right-4">06</div>
+<span class="font-label-md text-label-md text-white mb-4 block">WRAP-UP</span>
+<p class="text-sm opacity-80">Strike, reporting, and memory capture.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto">
+<div class="grid md:grid-cols-2 gap-12">
+<div class="glass-card p-12 rounded-3xl relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 stage-glow-pink opacity-50 group-hover:opacity-80 transition-opacity"></div>
+<p class="text-headline-sm font-headline-sm mb-8 relative z-10 italic">"The Scene Co. doesn't just deliver stages; they deliver moments that define our brand's global identity. Their technical prowess is unmatched."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center font-bold">L</div>
+<div>
+<p class="font-bold">Creative Director</p>
+<p class="text-sm text-on-surface-variant">LVMH Group</p>
+</div>
+</div>
+</div>
+<div class="glass-card p-12 rounded-3xl relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-40 h-40 stage-glow-blue opacity-50 group-hover:opacity-80 transition-opacity"></div>
+<p class="text-headline-sm font-headline-sm mb-8 relative z-10 italic">"Scaling a festival experience is no easy feat. These guys handle the chaos with a calmness that allows the artistry to shine through."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center font-bold">U</div>
+<div>
+<p class="font-bold">Head of Production</p>
+<p class="text-sm text-on-surface-variant">Ultra Worldwide</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Accordion -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto border-t border-white/5">
+<h2 class="font-headline-lg text-headline-lg mb-12">Project Logistics</h2>
+<div class="space-y-4">
+<details class="glass-card rounded-xl p-6 group cursor-pointer">
+<summary class="flex justify-between items-center font-bold text-lg list-none">
+                    What is the typical lead time for a major production?
+                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant">For large-scale festival stages, we recommend 4-6 months. However, we've executed corporate activations in as little as 3 weeks when the vision is clear.</p>
+</details>
+<details class="glass-card rounded-xl p-6 group cursor-pointer">
+<summary class="flex justify-between items-center font-bold text-lg list-none">
+                    Do you handle international logistics and freight?
+                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant">Yes, we have a dedicated logistics arm that manages international shipping, ATA carnets, and local technical crew coordination globally.</p>
+</details>
+<details class="glass-card rounded-xl p-6 group cursor-pointer">
+<summary class="flex justify-between items-center font-bold text-lg list-none">
+                    Can we see 3D visualisations before the build?
+                    <span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<p class="mt-4 text-on-surface-variant">Absolutely. We provide high-fidelity 4K renders and VR walkthroughs during the Concept phase to ensure alignment before a single hammer is swung.</p>
+</details>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-24 px-margin-desktop max-w-container-max mx-auto bg-surface relative overflow-hidden">
+<div class="grid md:grid-cols-2 gap-16 relative z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-6">Let's build something unforgettable.</h2>
+<p class="text-on-surface-variant mb-12">Tell us about your next big idea. Our creative directors will get back to you within 24 hours.</p>
+<div class="space-y-6">
+<a class="flex items-center gap-4 p-4 bg-[#25D366]/10 border border-[#25D366]/20 rounded-xl hover:bg-[#25D366]/20 transition-all text-[#25D366]" href="https://wa.me/1234567890">
+<span class="material-symbols-outlined text-3xl">chat</span>
+<div>
+<p class="font-bold">WhatsApp Direct</p>
+<p class="text-sm">Instant response for urgent briefs.</p>
+</div>
+</a>
+<div class="flex items-center gap-4 p-4 bg-white/5 border border-white/10 rounded-xl">
+<span class="material-symbols-outlined text-3xl text-secondary">mail</span>
+<div>
+<p class="font-bold">hello@thesceneco.live</p>
+<p class="text-sm text-on-surface-variant">General inquiries and proposals.</p>
+</div>
+</div>
+</div>
+</div>
+<form class="glass-card p-8 rounded-2xl space-y-6">
+<div class="grid md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-bold mb-2">Name</label>
+<input class="w-full bg-[#111111] border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white p-3" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Organization</label>
+<input class="w-full bg-[#111111] border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white p-3" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Email Address</label>
+<input class="w-full bg-[#111111] border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white p-3" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-bold mb-2">Brief Summary</label>
+<textarea class="w-full bg-[#111111] border-0 border-b border-white/20 focus:border-primary-container focus:ring-0 text-white p-3" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary-container text-on-primary-fixed py-4 font-bold rounded-xl hover:scale-[1.02] transition-transform" type="submit">
+                    Send Brief
+                </button>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-12 border-t border-white/5">
+<div class="flex flex-col md:flex-row justify-between items-start gap-base px-margin-desktop max-w-container-max mx-auto">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md font-black text-on-surface-variant">THE SCENE CO. LIVE</div>
+<p class="font-label-md text-label-md text-on-surface-variant">© 2024 THE SCENE CO. LIVE. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-8 mt-8 md:mt-0">
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors duration-200 font-label-md text-label-md" href="#">Instagram</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors duration-200 font-label-md text-label-md" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors duration-200 font-label-md text-label-md" href="#">Vimeo</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors duration-200 font-label-md text-label-md" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Simple scroll reveal
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>
