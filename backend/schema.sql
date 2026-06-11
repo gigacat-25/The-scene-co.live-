@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS inquiries (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL,
   email TEXT NOT NULL,
+  phone TEXT,
   project_type TEXT NOT NULL,
   budget TEXT NOT NULL,
   timeline TEXT NOT NULL,

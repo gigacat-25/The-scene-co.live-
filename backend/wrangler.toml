@@ -8,7 +8,7 @@ CLERK_SECRET_KEY = "your_clerk_secret_key"
 GMAIL_CLIENT_ID = "your_gmail_client_id"
 GMAIL_CLIENT_SECRET = "your_gmail_client_secret"
 GMAIL_REFRESH_TOKEN = "your_gmail_refresh_token"
-ADMIN_EMAIL = "hello@thesceneco.live"
+ADMIN_EMAIL = "thejaswinps@gmail.com"
 
 [[d1_databases]]
 binding = "DB"

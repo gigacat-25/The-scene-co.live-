@@ -64,12 +64,40 @@ function showToast(message, isError = false) {
     }, 4000);
 }
 
+function getClerkDomain(publishableKey) {
+    try {
+        const base64 = publishableKey.split('_')[2];
+        const normalized = base64.replace(/-/g, '+').replace(/_/g, '/');
+        const decoded = atob(normalized);
+        return decoded.endsWith('$') ? decoded.slice(0, -1) : decoded;
+    } catch (err) {
+        console.error("Failed to parse Clerk Publishable Key:", err);
+        return null;
+    }
+}
+
 // Clerk Authentication Management
 async function initClerk() {
-    const checkClerkLoaded = setInterval(async () => {
-        if (window.Clerk) {
-            clearInterval(checkClerkLoaded);
-            
+    const pubKey = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+    if (!pubKey || pubKey === 'pk_test_placeholder_key_replace_me') {
+        showToast("Clerk Publishable Key is not configured. Please set VITE_CLERK_PUBLISHABLE_KEY in your .env file.", true);
+        return;
+    }
+
+    const domain = getClerkDomain(pubKey);
+    if (!domain) {
+        showToast("Invalid Clerk Publishable Key format.", true);
+        return;
+    }
+
+    return new Promise((resolve) => {
+        const script = document.createElement('script');
+        script.src = `https://${domain}/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+        script.async = true;
+        script.crossOrigin = 'anonymous';
+        script.setAttribute('data-clerk-publishable-key', pubKey);
+        
+        script.onload = async () => {
             try {
                 await window.Clerk.load({
                     appearance: {
@@ -82,19 +110,24 @@ async function initClerk() {
                     }
                 });
 
-                // Listen for session changes
                 window.Clerk.addListener(({ user }) => {
                     handleClerkState(user);
                 });
 
-                // Check initial state
                 handleClerkState(window.Clerk.user);
+                resolve();
             } catch (err) {
                 console.error("Clerk load error:", err);
                 showToast("Clerk load failed: " + err.message, true);
             }
-        }
-    }, 100);
+        };
+        
+        script.onerror = () => {
+            showToast("Failed to load ClerkJS script from " + domain, true);
+        };
+
+        document.head.appendChild(script);
+    });
 }
 
 function handleClerkState(user) {
@@ -113,7 +146,10 @@ function handleClerkState(user) {
         adminLayout.style.display = 'none';
         
         if (signInDiv && signInDiv.innerHTML === '') {
-            window.Clerk.mountSignIn(signInDiv);
+            window.Clerk.mountSignIn(signInDiv, {
+                afterSignInUrl: '/admin',
+                afterSignUpUrl: '/admin'
+            });
         }
     }
 }

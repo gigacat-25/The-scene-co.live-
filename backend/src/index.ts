@@ -127,84 +127,237 @@ app.get('/api/services', async (c) => {
 app.post('/api/inquiries', async (c) => {
   try {
     const body = await c.req.json();
-    const { name, email, project_type, budget, timeline, details } = body;
+    const { name, email, phone, project_type, budget, timeline, details } = body;
 
     if (!name || !email || !project_type || !budget || !timeline || !details) {
       return c.json({ error: 'Missing required inquiry fields' }, 400);
     }
 
     const info = await c.env.DB.prepare(
-      `INSERT INTO inquiries (name, email, project_type, budget, timeline, details, status) 
-       VALUES (?, ?, ?, ?, ?, ?, 'unread')`
+      `INSERT INTO inquiries (name, email, phone, project_type, budget, timeline, details, status) 
+       VALUES (?, ?, ?, ?, ?, ?, ?, 'unread')`
     )
-      .bind(name, email, project_type, budget, timeline, details)
+      .bind(name, email, phone || null, project_type, budget, timeline, details)
       .run();
 
     // Dispatch emails asynchronously in the background so we do not delay the API response
     c.executionCtx.waitUntil((async () => {
       try {
         // 1. Send client confirmation email
-        const clientSubject = `We have received your brief — THE SCENE CO. LIVE`;
+        const clientSubject = `We have received your brief | THE SCENE CO. LIVE`;
         const clientHtml = `
-          <div style="font-family: sans-serif; max-width: 600px; color: #111; line-height: 1.6;">
-            <h2 style="color: #d946ef; font-size: 24px; text-transform: uppercase;">Let's build something unforgettable.</h2>
-            <p>Hi ${name},</p>
-            <p>Thank you for initiating contact with THE SCENE CO. LIVE. We have received your creative brief and our production team is reviewing your project parameters.</p>
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-            <h3 style="color: #666; font-size: 14px; text-transform: uppercase; margin-bottom: 10px;">Your Brief Summary</h3>
-            <ul style="list-style: none; padding: 0; margin: 0;">
-              <li style="margin-bottom: 8px;"><strong>Project Scale/Type:</strong> ${project_type}</li>
-              <li style="margin-bottom: 8px;"><strong>Estimated Budget:</strong> ${budget}</li>
-              <li style="margin-bottom: 8px;"><strong>Timeline Expectation:</strong> ${timeline}</li>
-            </ul>
-            <div style="background: #f9f9f9; border: 1px solid #f1f1f1; padding: 15px; border-radius: 8px; margin-top: 15px;">
-              <strong>Brief Vision Summary:</strong>
-              <p style="white-space: pre-wrap; margin: 8px 0 0 0; font-size: 14px; color: #555;">${details}</p>
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>We have received your brief | THE SCENE CO. LIVE</title>
+            <style>
+              @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+              body {
+                margin: 0;
+                padding: 0;
+                background-color: #080808;
+                font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                -webkit-font-smoothing: antialiased;
+              }
+            </style>
+          </head>
+          <body>
+            <div style="background-color: #080808; padding: 40px 20px; min-height: 100%;">
+              <div style="max-width: 600px; margin: 0 auto; background-color: #121212; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                
+                <!-- Glow Accent Bar -->
+                <div style="height: 4px; background: linear-gradient(90deg, #d946ef 0%, #a3e635 100%);"></div>
+                
+                <!-- Logo Header -->
+                <div style="padding: 30px 40px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: left;">
+                  <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; color: #a3e635;">THE SCENE CO. LIVE</span>
+                </div>
+                
+                <!-- Content Area -->
+                <div style="padding: 40px;">
+                  <h2 style="font-size: 26px; font-weight: 800; color: #ffffff; text-transform: uppercase; margin: 0 0 20px 0; letter-spacing: -0.5px; line-height: 1.25;">
+                    Let's build<br/><span style="color: #d946ef;">something unforgettable</span>.
+                  </h2>
+                  
+                  <p style="font-size: 15px; color: #e5e7eb; line-height: 1.6; margin: 0 0 24px 0;">Hi ${name},</p>
+                  <p style="font-size: 15px; color: #9ca3af; line-height: 1.6; margin: 0 0 30px 0;">
+                    Thank you for initiating contact with THE SCENE CO. LIVE. We have received your creative parameters, and our production studio has compiled your brief below:
+                  </p>
+                  
+                  <!-- Bento parameters grid table -->
+                  <table style="width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; overflow: hidden; background-color: rgba(255, 255, 255, 0.01);">
+                    <tr>
+                      <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); width: 150px; vertical-align: middle;">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Phone Number</span>
+                      </td>
+                      <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #ffffff; font-weight: 600; vertical-align: middle;">
+                        ${phone || 'Not provided'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); width: 150px; vertical-align: middle;">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Project Scale</span>
+                      </td>
+                      <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #ffffff; font-weight: 600; vertical-align: middle;">
+                        ${project_type}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Est. Budget</span>
+                      </td>
+                      <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #a3e635; font-weight: 700; vertical-align: middle;">
+                        ${budget}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 16px; background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                        <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Timeline</span>
+                      </td>
+                      <td style="padding: 16px; font-size: 15px; color: #3b82f6; font-weight: 600; vertical-align: middle;">
+                        ${timeline}
+                      </td>
+                    </tr>
+                  </table>
+                  
+                  <!-- Description box -->
+                  <div style="margin-top: 30px; background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 24px;">
+                    <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; display: block; font-weight: 700; margin-bottom: 12px;">Creative Vision Summary</span>
+                    <p style="white-space: pre-wrap; margin: 0; font-size: 14px; color: #e5e7eb; line-height: 1.7; font-family: inherit;">${details}</p>
+                  </div>
+                  
+                  <p style="font-size: 15px; color: #9ca3af; line-height: 1.6; margin: 30px 0 0 0;">
+                    One of our creative directors will get back to you within 24 hours to schedule an initial production consultation. We look forward to collaborating.
+                  </p>
+                </div>
+                
+                <!-- Footer -->
+                <div style="padding: 30px 40px; background-color: #0b0b0b; border-top: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+                  <p style="font-size: 12px; color: #6b7280; margin: 0; line-height: 1.6;">
+                    THE SCENE CO. LIVE &copy; 2026. All rights reserved.<br/>
+                    Spatial event architects, engineers, and production leads translating radical creative concepts into high-fidelity physical reality.
+                  </p>
+                </div>
+              </div>
             </div>
-            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-            <p>One of our creative directors will get back to you within 24 hours to schedule an initial consultation.</p>
-            <br />
-            <p>Regards,</p>
-            <p><strong>THE SCENE CO. LIVE</strong><br />Production Studio</p>
-          </div>
+          </body>
+          </html>
         `;
         await sendGmailEmail(c.env, email, clientSubject, clientHtml);
 
         // 2. Send admin notification email
         if (c.env.ADMIN_EMAIL) {
-          const adminSubject = `[ALERT] New Client Brief from ${name} (${project_type})`;
+          const adminSubject = `[ALERT] New Client Brief from ${name} | ${project_type}`;
           const adminHtml = `
-            <div style="font-family: sans-serif; max-width: 600px; color: #111; line-height: 1.6;">
-              <h2 style="color: #a3e635; font-size: 20px; text-transform: uppercase;">New Project Brief Received</h2>
-              <p>An inquiry has been submitted through the contact page form. The details are compiled below:</p>
-              <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-                <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 10px; font-weight: bold; width: 150px;">Client Name:</td>
-                  <td style="padding: 10px;">${name}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 10px; font-weight: bold;">Client Email:</td>
-                  <td style="padding: 10px;"><a href="mailto:${email}">${email}</a></td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 10px; font-weight: bold;">Project Type:</td>
-                  <td style="padding: 10px;">${project_type}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 10px; font-weight: bold;">Estimated Budget:</td>
-                  <td style="padding: 10px; color: #b45309;">${budget}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                  <td style="padding: 10px; font-weight: bold;">Timeline:</td>
-                  <td style="padding: 10px; color: #2563eb;">${timeline}</td>
-                </tr>
-              </table>
-              <div style="background: #f9f9f9; border: 1px solid #f1f1f1; padding: 20px; border-radius: 8px; margin-top: 15px;">
-                <strong>Creative Brief & Details:</strong>
-                <p style="white-space: pre-wrap; margin: 10px 0 0 0; font-size: 14px; color: #333;">${details}</p>
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>New Project Brief Received</title>
+              <style>
+                @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+                body {
+                  margin: 0;
+                  padding: 0;
+                  background-color: #080808;
+                  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+                  -webkit-font-smoothing: antialiased;
+                }
+              </style>
+            </head>
+            <body>
+              <div style="background-color: #080808; padding: 40px 20px; min-height: 100%;">
+                <div style="max-width: 600px; margin: 0 auto; background-color: #121212; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
+                  
+                  <!-- Alert Accent Bar (Lime Glow) -->
+                  <div style="height: 4px; background: linear-gradient(90deg, #a3e635 0%, #eab308 100%);"></div>
+                  
+                  <!-- Admin Alert Header -->
+                  <div style="padding: 30px 40px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.04); text-align: left; display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: #a3e635;">[ALERT] NEW BRIEF RECEIVED</span>
+                  </div>
+                  
+                  <!-- Content Area -->
+                  <div style="padding: 40px;">
+                    <h2 style="font-size: 22px; font-weight: 800; color: #ffffff; text-transform: uppercase; margin: 0 0 16px 0; letter-spacing: -0.5px; line-height: 1.25;">
+                      New Lead Parameters
+                    </h2>
+                    <p style="font-size: 14px; color: #9ca3af; line-height: 1.6; margin: 0 0 24px 0;">
+                      An inquiry has been submitted through the contact page form. The lead details are compiled below:
+                    </p>
+                    
+                    <!-- Bento parameters grid table -->
+                    <table style="width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; overflow: hidden; background-color: rgba(255, 255, 255, 0.01);">
+                      <tr>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); width: 150px; vertical-align: middle;">
+                          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Client Name</span>
+                        </td>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #ffffff; font-weight: 600; vertical-align: middle;">
+                          ${name}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Client Email</span>
+                        </td>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; vertical-align: middle;">
+                          <a href="mailto:${email}" style="color: #d946ef; text-decoration: underline; font-weight: 600;">${email}</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Client Phone</span>
+                        </td>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #ffffff; font-weight: 600; vertical-align: middle;">
+                          ${phone ? `<a href="tel:${phone}" style="color: #a3e635; text-decoration: underline; font-weight: 600;">${phone}</a>` : 'Not provided'}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Project Scale</span>
+                        </td>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #ffffff; font-weight: 600; vertical-align: middle;">
+                          ${project_type}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Est. Budget</span>
+                        </td>
+                        <td style="padding: 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); font-size: 15px; color: #a3e635; font-weight: 700; vertical-align: middle;">
+                          ${budget}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding: 16px; background-color: rgba(255, 255, 255, 0.01); vertical-align: middle;">
+                          <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; font-weight: 700;">Timeline</span>
+                        </td>
+                        <td style="padding: 16px; font-size: 15px; color: #3b82f6; font-weight: 600; vertical-align: middle;">
+                          ${timeline}
+                        </td>
+                      </tr>
+                    </table>
+                    
+                    <!-- Description box -->
+                    <div style="margin-top: 30px; background-color: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 14px; padding: 24px;">
+                      <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #888888; display: block; font-weight: 700; margin-bottom: 12px;">Client Creative Brief</span>
+                      <p style="white-space: pre-wrap; margin: 0; font-size: 14px; color: #e5e7eb; line-height: 1.7; font-family: inherit;">${details}</p>
+                    </div>
+                  </div>
+                  
+                  <!-- Footer -->
+                  <div style="padding: 30px 40px; background-color: #0b0b0b; border-top: 1px solid rgba(255, 255, 255, 0.04); text-align: center;">
+                    <p style="font-size: 11px; color: #6b7280; margin: 0; line-height: 1.6;">
+                      This lead has been saved to your Cloudflare D1 Database and is available for management in your CMS Admin Dashboard.
+                    </p>
+                  </div>
+                </div>
               </div>
-              <p style="margin-top: 30px; font-size: 12px; color: #888;">This lead has been saved to your Cloudflare D1 Database and is available for management in your CMS Admin Dashboard.</p>
-            </div>
+            </body>
+            </html>
           `;
           await sendGmailEmail(c.env, c.env.ADMIN_EMAIL, adminSubject, adminHtml);
         }
@@ -227,6 +380,8 @@ app.post('/api/inquiries', async (c) => {
 app.use('/api/admin/*', async (c, next) => {
   try {
     const authHeader = c.req.header('Authorization');
+    console.log("[DEBUG AUTH] Auth Header:", authHeader ? authHeader.substring(0, 30) + "..." : "missing");
+
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return c.json({ error: 'Unauthorized: Missing or invalid authorization header' }, 401);
     }
@@ -237,12 +392,22 @@ app.use('/api/admin/*', async (c, next) => {
     });
 
     const requestState = await clerk.authenticateRequest(c.req.raw);
+    console.log("[DEBUG AUTH] RequestState isSignedIn:", requestState.isSignedIn);
+    console.log("[DEBUG AUTH] RequestState status:", requestState.status);
+    console.log("[DEBUG AUTH] RequestState reason:", requestState.reason);
+    console.log("[DEBUG AUTH] RequestState message:", requestState.message);
+
     if (!requestState.isSignedIn) {
-      return c.json({ error: 'Unauthorized: Invalid session signature or expired token' }, 401);
+      return c.json({ 
+        error: 'Unauthorized: Invalid session signature or expired token',
+        reason: requestState.reason,
+        message: requestState.message
+      }, 401);
     }
 
     await next();
   } catch (err: any) {
+    console.error("[DEBUG AUTH] Exception during authentication:", err);
     return c.json({ error: `Unauthorized: ${err.message}` }, 401);
   }
 });
@@ -520,3 +685,5 @@ app.get('/api/media/*', async (c) => {
 });
 
 export default app;
+// Force Wrangler reload to pick up new Google OAuth secrets
+

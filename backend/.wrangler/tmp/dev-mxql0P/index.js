@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 
-// .wrangler/tmp/bundle-RDL07Q/checked-fetch.js
+// .wrangler/tmp/bundle-W2AK7u/checked-fetch.js
 var urls = /* @__PURE__ */ new Set();
 function checkURL(request, init) {
   const url = request instanceof URL ? request : new URL(
@@ -11078,6 +11078,7 @@ app.post("/api/inquiries", async (c) => {
 app.use("/api/admin/*", async (c, next) => {
   try {
     const authHeader = c.req.header("Authorization");
+    console.log("[DEBUG AUTH] Auth Header:", authHeader ? authHeader.substring(0, 30) + "..." : "missing");
     if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return c.json({ error: "Unauthorized: Missing or invalid authorization header" }, 401);
     }
@@ -11086,11 +11087,20 @@ app.use("/api/admin/*", async (c, next) => {
       secretKey: c.env.CLERK_SECRET_KEY
     });
     const requestState = await clerk.authenticateRequest(c.req.raw);
+    console.log("[DEBUG AUTH] RequestState isSignedIn:", requestState.isSignedIn);
+    console.log("[DEBUG AUTH] RequestState status:", requestState.status);
+    console.log("[DEBUG AUTH] RequestState reason:", requestState.reason);
+    console.log("[DEBUG AUTH] RequestState message:", requestState.message);
     if (!requestState.isSignedIn) {
-      return c.json({ error: "Unauthorized: Invalid session signature or expired token" }, 401);
+      return c.json({
+        error: "Unauthorized: Invalid session signature or expired token",
+        reason: requestState.reason,
+        message: requestState.message
+      }, 401);
     }
     await next();
   } catch (err) {
+    console.error("[DEBUG AUTH] Exception during authentication:", err);
     return c.json({ error: `Unauthorized: ${err.message}` }, 401);
   }
 });
@@ -11343,7 +11353,7 @@ var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx)
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
 
-// .wrangler/tmp/bundle-RDL07Q/middleware-insertion-facade.js
+// .wrangler/tmp/bundle-W2AK7u/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
@@ -11375,7 +11385,7 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
 }
 __name(__facade_invoke__, "__facade_invoke__");
 
-// .wrangler/tmp/bundle-RDL07Q/middleware-loader.entry.ts
+// .wrangler/tmp/bundle-W2AK7u/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;

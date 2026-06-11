@@ -10,7 +10,7 @@ INSERT OR REPLACE INTO settings (key, value) VALUES
 ('site_name', 'THE SCENE CO. LIVE'),
 ('logo_nav', '/logo-nav.png'),
 ('logo_hero', '/logo-hero.png'),
-('email', 'hello@thesceneco.live'),
+('email', 'thejaswinps@gmail.com'),
 ('phone', '+1 (800) 555-SCENE'),
 ('whatsapp', 'https://wa.me/1234567890'),
 ('footer_desc', 'Spatial event architects, engineers, and production leads translating radical creative concepts into high-fidelity physical reality.'),
