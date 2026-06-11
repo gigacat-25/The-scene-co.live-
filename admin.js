@@ -1,6 +1,7 @@
 // CMS Admin Client Logic for The Scene Co. Live
 
-const API_BASE = import.meta.env.VITE_API_BASE || '/api';
+// Falls back to the production worker URL if not overridden by Vite's build process
+const API_BASE = 'https://the-scene-api.pabt2005.workers.dev/api';
 
 // Custom Cursor (shared aesthetic)
 const cursorDot = document.getElementById('cursor-dot');
