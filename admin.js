@@ -1,6 +1,6 @@
 // CMS Admin Client Logic for The Scene Co. Live
 
-const API_BASE = '/api';
+const API_BASE = import.meta.env.VITE_API_BASE || '/api';
 
 // Custom Cursor (shared aesthetic)
 const cursorDot = document.getElementById('cursor-dot');
