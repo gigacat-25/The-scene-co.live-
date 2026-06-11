@@ -1,0 +1,20 @@
+name = "the-scene-api"
+main = "src/index.ts"
+compatibility_date = "2024-03-01"
+
+[vars]
+CLERK_PUBLISHABLE_KEY = "your_clerk_publishable_key"
+CLERK_SECRET_KEY = "your_clerk_secret_key"
+GMAIL_CLIENT_ID = "your_gmail_client_id"
+GMAIL_CLIENT_SECRET = "your_gmail_client_secret"
+GMAIL_REFRESH_TOKEN = "your_gmail_refresh_token"
+ADMIN_EMAIL = "hello@thesceneco.live"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "the-scene-db"
+database_id = "9edb8e04-364f-49c9-91b8-420c0ae7d915"
+
+[[r2_buckets]]
+binding = "MEDIA_BUCKET"
+bucket_name = "the-scene-media"

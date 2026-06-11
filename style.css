@@ -1454,6 +1454,284 @@
             }
         }
 
+        /* -------------------------------------------------------------
+           18. IMPACT STATS SECTION
+           ------------------------------------------------------------- */
+        .impact-stats {
+            padding: 100px 0 120px;
+            background-color: var(--bg-dark-accent);
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 36px 32px;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s,
+                        box-shadow 0.4s;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 40px -10px rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-value {
+            font-family: var(--font-headline);
+            font-size: clamp(36px, 4vw, 56px);
+            font-weight: 800;
+            line-height: 1.0;
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+        }
+
+        .stat-sub {
+            font-family: var(--font-body);
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        @media (max-width: 968px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 540px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* -------------------------------------------------------------
+           19. FEATURED PROJECTS PREVIEW
+           ------------------------------------------------------------- */
+        .featured-preview {
+            padding: 100px 0 120px;
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .featured-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        border-color 0.4s,
+                        box-shadow 0.4s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 10px 40px -10px var(--blue-glow);
+        }
+
+        .featured-image-wrapper {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .featured-card:hover .featured-image {
+            transform: scale(1.05);
+        }
+
+        .featured-overlay {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .featured-info {
+            padding: 24px;
+        }
+
+        .featured-info h3 {
+            font-size: 20px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .featured-info p {
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 968px) {
+            .featured-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        /* -------------------------------------------------------------
+           20. BRANDS / TRUSTED BY SECTION
+           ------------------------------------------------------------- */
+        .brands-section {
+            padding: 100px 0;
+            background-color: var(--bg-dark-accent);
+            position: relative;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 32px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            text-align: center;
+            transition: transform 0.3s,
+                        border-color 0.3s,
+                        box-shadow 0.3s;
+            cursor: default;
+        }
+
+        .brand-logo:hover {
+            transform: translateY(-4px);
+            border-color: var(--lime);
+            box-shadow: 0 8px 30px -10px var(--lime-glow);
+        }
+
+        .brand-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(132, 204, 22, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--lime);
+        }
+
+        .brand-icon span {
+            font-size: 24px;
+        }
+
+        .brand-logo span {
+            font-family: var(--font-headline);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 0.02em;
+            transition: color 0.3s;
+        }
+
+        .brand-logo:hover span {
+            color: var(--text-light);
+        }
+
+        @media (max-width: 968px) {
+            .brands-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 540px) {
+            .brands-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* -------------------------------------------------------------
+           21. CLOSING CTA BANNER
+           ------------------------------------------------------------- */
+        .cta-banner {
+            padding: 100px 0;
+            background-color: var(--bg-dark);
+            position: relative;
+        }
+
+        .cta-banner-content {
+            background: linear-gradient(135deg, rgba(132, 204, 22, 0.05) 0%, rgba(236, 72, 153, 0.05) 50%, rgba(59, 130, 246, 0.05) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 80px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.4s;
+        }
+
+        .cta-banner-content:hover {
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-banner-content h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-banner-content p {
+            color: var(--text-muted);
+            font-size: 18px;
+            max-width: 560px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-banner-content .hero-ctas {
+            position: relative;
+            z-index: 2;
+        }
+
         /* Logo styling using original image asset */
         .nav-logo-img {
             height: 52px;
